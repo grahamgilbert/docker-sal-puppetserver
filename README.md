@@ -11,3 +11,14 @@ This image extends (grahamgilbet/puppetserver)[https://registry.hub.docker.com/u
 * ``SAL_PUPPETSERVER_URL``: The URL of your Sal server. Defaults to ``http://sal``
 * ``SAL_PUPPETSERVER_PRIVATE_KEY``: Your Sal API Private Key. Defaults to ``123``
 * ``SAL_PUPPETSERVER_PUBLIC_KEY``: Your Sal API Public Key. Defaults to ``123``
+
+## Example csr_attributes.yaml
+
+Where ``mySerialNumber`` is the Mac's serial mumber and ``facter_virtual`` is the output of ``facter virtual``.
+
+``` yaml
+---
+extension_requests:
+  1.3.6.1.4.1.34380.1.2.1.1: mySerialNumber
+  1.3.6.1.4.1.34380.1.2.1.2: facter_virtual
+```
