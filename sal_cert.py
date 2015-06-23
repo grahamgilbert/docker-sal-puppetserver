@@ -61,17 +61,18 @@ except:
     sys.exit(1)
 
 serial_number = strippedLineList2[trusted_attribute1+1]
+
 logger.info("Serial number: %s", serial_number)
 
-api_url = sal_url+'/api/v1/machines/'
+api_url = sal_url+'/api/machines/'+serial_number+'/'
 
-payload = {'private_key': private_key, 'public_key': public_key, 'serials': serial_number}
-r = requests.post(api_url, data=payload)
+headers = {'privatekey': private_key, 'publickey': public_key}
+r = requests.get(api_url, headers=headers)
 logger.info(r.text)
 
 # We get json back.
 try:
-    machine = json.loads(r.text)[0]
+    machine = json.loads(r.text)
 except:
     logger.info("No JSON response.")
     sys.exit(1)
