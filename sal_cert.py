@@ -31,6 +31,7 @@ public_key = 'REPLACE_PUBLIC'
 logger.info("Public Key: %s", public_key)
 private_key = 'REPLACE_PRIVATE'
 logger.info("Private Key: %s", private_key)
+verify = 'REPLACE_VERIFY'
 
 try:
     hostname = sys.argv[1]
@@ -67,7 +68,7 @@ logger.info("Serial number: %s", serial_number)
 api_url = sal_url+'/api/machines/'+serial_number+'/'
 
 headers = {'privatekey': private_key, 'publickey': public_key}
-r = requests.get(api_url, headers=headers)
+r = requests.get(api_url, headers=headers, verify=verify)
 logger.info(r.text)
 
 # We get json back.

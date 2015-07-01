@@ -3,6 +3,7 @@
 sed -i -e "s*REPLACE_URL*$SAL_PUPPETSERVER_URL*g" /sal_cert.py
 sed -i -e "s/REPLACE_PUBLIC/$SAL_PUPPETSERVER_PUBLIC_KEY/g" /sal_cert.py
 sed -i -e "s/REPLACE_PRIVATE/$SAL_PUPPETSERVER_PRIVATE_KEY/g" /sal_cert.py
+sed -i -e "s/REPLACE_VERIFY/$SAL_PUPPETSERVER_VERIFY/g" /sal_cert.py
 
 cat << EOF >> /etc/default/puppetserver
 ###########################################
