@@ -31,7 +31,7 @@ public_key = 'REPLACE_PUBLIC'
 logger.info("Public Key: %s", public_key)
 private_key = 'REPLACE_PRIVATE'
 logger.info("Private Key: %s", private_key)
-verify = 'REPLACE_VERIFY'
+verify = REPLACE_VERIFY
 
 try:
     hostname = sys.argv[1]
