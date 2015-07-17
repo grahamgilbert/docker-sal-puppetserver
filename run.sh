@@ -29,18 +29,18 @@ SERVICE_STOP_RETRIES=60
 # START_TIMEOUT=120
 EOF
 
-PUPPETDB_IP="${PUPPETDB_PORT_8081_TCP_ADDR:=abc}"
+# PUPPETDB_IP="${PUPPETDB_PORT_8081_TCP_ADDR:=abc}"
 
-if [ "$PUPPETDB_IP" != "abc" ]
-    then
+# if [ "$PUPPETDB_IP" != "abc" ]
+#     then
 
-    PUPPETDB_CONF=/etc/puppet/puppetdb.conf
-    rm -f $PUPPETDB_CONF
-    cat << EOF >> $PUPPETDB_CONF
-[main]
-server = $PUPPETDB_PORT_8081_TCP_ADDR
-port = $PUPPETDB_PORT_8081_TCP_PORT
-EOF
+#     PUPPETDB_CONF=/etc/puppet/puppetdb.conf
+#     rm -f $PUPPETDB_CONF
+#     cat << EOF >> $PUPPETDB_CONF
+# [main]
+# server = $PUPPETDB_PORT_8081_TCP_ADDR
+# port = $PUPPETDB_PORT_8081_TCP_PORT
+# EOF
 fi
 
 puppetserver foreground
