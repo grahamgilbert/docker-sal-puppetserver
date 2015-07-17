@@ -35,6 +35,7 @@ if [ "$PUPPETDB_IP" != "abc" ]
     then
 
     PUPPETDB_CONF=/etc/puppet/puppetdb.conf
+    rm -f $PUPPETDB_CONF
     cat << EOF >> $PUPPETDB_CONF
 [main]
 server = $PUPPETDB_PORT_8081_TCP_ADDR
