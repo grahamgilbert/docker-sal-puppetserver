@@ -29,4 +29,12 @@ SERVICE_STOP_RETRIES=60
 # START_TIMEOUT=120
 EOF
 
+PUPPETDB_CONF=/etc/puppet/puppetdb.conf
+
+if [ -a $PUPPETDB_CONF ]
+    then
+    sed -i s/'<<PUPPETDB_HOST>>'/'$PUPPETDB_PORT_8081_TCP_ADDR'/g $PUPPETDB_CONF
+    sed -i s/'<<PUPPETDB_PORT>>'/'$PUPPETDB_PORT_8081_TCP_PORT'/g $PUPPETDB_CONF
+fi
+
 puppetserver foreground
