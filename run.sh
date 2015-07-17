@@ -41,6 +41,6 @@ EOF
 # server = $PUPPETDB_PORT_8081_TCP_ADDR
 # port = $PUPPETDB_PORT_8081_TCP_PORT
 # EOF
-fi
+# fi
 
 puppetserver foreground
