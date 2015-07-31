@@ -61,7 +61,7 @@ except:
     logger.info("No serial number in CSR. Rejecting CSR.")
     sys.exit(1)
 
-serial_number = strippedLineList2[trusted_attribute1+1]
+serial_number = strippedLineList2[trusted_attribute1+1].upper()
 
 logger.info("Serial number: %s", serial_number)
 
