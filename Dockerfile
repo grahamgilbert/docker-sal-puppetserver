@@ -12,4 +12,4 @@ RUN touch /var/log/check_csr.out
 RUN chown puppet:puppet /var/log/check_csr.out
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
-CMD /run.sh
+# CMD /run.sh
