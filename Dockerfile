@@ -10,6 +10,7 @@ ADD sal_cert.py /sal_cert.py
 RUN chmod 755 /sal_cert.py
 RUN touch /var/log/check_csr.out
 RUN chown puppet:puppet /var/log/check_csr.out
-ADD run.sh /run.sh
-RUN chmod 755 /run.sh
-CMD /run.sh
+# ADD run.sh /run.sh
+# RUN chmod 755 /run.sh
+# CMD /run.sh
+CMD ["/opt/puppetlabs/bin/puppetserver", "foreground"]

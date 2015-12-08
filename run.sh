@@ -55,4 +55,4 @@ fi
 #     puppet apply /puppetdb.pp
 # fi
 
-/opt/puppetlabs/bin/puppetserver foreground
+bash -C "/opt/puppetlabs/bin/puppetserver foreground"
