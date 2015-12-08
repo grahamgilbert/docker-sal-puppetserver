@@ -12,6 +12,7 @@ import requests
 import json
 import logging
 
+
 LOG_FILENAME = '/var/log/check_csr.out'
 
 logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO)
@@ -25,11 +26,11 @@ logger.info('Start script')
 for key in os.environ.keys():
     logger.info("%30s %s \n" % (key,os.environ[key]))
 
-sal_url = 'REPLACE_URL'
+sal_url = os.getenv('SAL_PUPPETSERVER_URL', 'http://sal')
 logger.info("Sal URL: %s", sal_url)
-public_key = 'REPLACE_PUBLIC'
+public_key = os.getenv('SAL_PUPPETSERVER_PUBLIC_KEY', '123')
 logger.info("Public Key: %s", public_key)
-private_key = 'REPLACE_PRIVATE'
+private_key = os.getenv('SAL_PUPPETSERVER_PRIVATE_KEY', '123')
 logger.info("Private Key: %s", private_key)
 verify = REPLACE_VERIFY
 

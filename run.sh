@@ -1,5 +1,5 @@
 #!/bin/bash
-
+PATH=/opt/puppetlabs/bin:$PATH
 sed -i -e "s*REPLACE_URL*$SAL_PUPPETSERVER_URL*g" /sal_cert.py
 sed -i -e "s/REPLACE_PUBLIC/$SAL_PUPPETSERVER_PUBLIC_KEY/g" /sal_cert.py
 sed -i -e "s/REPLACE_PRIVATE/$SAL_PUPPETSERVER_PRIVATE_KEY/g" /sal_cert.py
@@ -29,18 +29,28 @@ SERVICE_STOP_RETRIES=60
 # START_TIMEOUT=120
 EOF
 
-# PUPPETDB_IP="${PUPPETDB_PORT_8081_TCP_ADDR:=abc}"
+cat << EOF >> /etc/default/puppet
+# Defaults for puppet - sourced by /etc/init.d/puppet
 
-# if [ "$PUPPETDB_IP" != "abc" ]
-#     then
+# Enable puppet agent service?
+# Setting this to "yes" allows the puppet agent service to run.
+# Setting this to "no" keeps the puppet agent service from running.
+START=yes
 
-#     PUPPETDB_CONF=/etc/puppet/puppetdb.conf
-#     rm -f $PUPPETDB_CONF
-#     cat << EOF >> $PUPPETDB_CONF
-# [main]
-# server = $PUPPETDB_PORT_8081_TCP_ADDR
-# port = $PUPPETDB_PORT_8081_TCP_PORT
-# EOF
+# Startup options
+DAEMON_OPTS=""
+EOF
+
+PUPPETDB_CONF=/etc/puppet/puppetdb.conf
+
+if [ -a $PUPPETDB_CONF ]
+    then
+    sed -i s/'<<PUPPETDB_HOST>>'/'$PUPPETDB_PORT_8081_TCP_ADDR'/g $PUPPETDB_CONF
+    sed -i s/'<<PUPPETDB_PORT>>'/'$PUPPETDB_PORT_8081_TCP_PORT'/g $PUPPETDB_CONF
+fi
+# ${PUPPETDB_PORT_8081_TCP_ADDR:="null"}
+# if [ ! $PUPPETDB_PORT_8081_TCP_ADDR -eq "null" ]
+# then
+#     #sed -i s/'<<PUPPETDB>>'/'$PUPPETDB_PORT_8081_TCP_ADDR:PUPPETDB_PORT_8081_TCP_PORT'/g /puppetdb.pp
+#     puppet apply /puppetdb.pp
 # fi
-
-puppetserver foreground
