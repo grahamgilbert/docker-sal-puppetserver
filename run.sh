@@ -43,4 +43,4 @@ EOF
 # EOF
 # fi
 
-puppetserver foreground
+/opt/puppetlabs/bin/puppetserver foreground
