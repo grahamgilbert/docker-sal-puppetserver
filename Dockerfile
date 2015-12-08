@@ -13,5 +13,6 @@ RUN chown puppet:puppet /var/log/check_csr.out
 # ADD run.sh /run.sh
 # RUN chmod 755 /run.sh
 # CMD /run.sh
-CMD ['/set_conf.sh']
-ENTRYPOINT ["/opt/puppetlabs/bin/puppetserver", "foreground"]
+#CMD ['/set_conf.sh']
+CMD bash -C '/set_conf.sh';'/opt/puppetlabs/bin/puppetserver foreground'
+#ENTRYPOINT ["/opt/puppetlabs/bin/puppetserver", "foreground"]
