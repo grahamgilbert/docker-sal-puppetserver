@@ -26,13 +26,17 @@ logger.info('Start script')
 for key in os.environ.keys():
     logger.info("%30s %s \n" % (key,os.environ[key]))
 
-sal_url = os.getenv('SAL_PUPPETSERVER_URL', 'http://sal')
+#sal_url = os.getenv('SAL_PUPPETSERVER_URL', 'http://sal')
+sal_url = 'REPLACE_URL'
 logger.info("Sal URL: %s", sal_url)
-public_key = os.getenv('SAL_PUPPETSERVER_PUBLIC_KEY', '123')
+#public_key = os.getenv('SAL_PUPPETSERVER_PUBLIC_KEY', '123')
+public_key = 'REPLACE_PUBLIC'
 logger.info("Public Key: %s", public_key)
-private_key = os.getenv('SAL_PUPPETSERVER_PRIVATE_KEY', '123')
+#private_key = os.getenv('SAL_PUPPETSERVER_PRIVATE_KEY', '123')
+private_key = 'REPLACE_PRIVATE'
 logger.info("Private Key: %s", private_key)
-if os.getenv('SAL_PUPPETSERVER_VERIFY', 'True').lower == 'false':
+verify_test = 'REPLACE_VERIFY'
+if verify_test.lower == 'false':
     verify = False
 else:
     verify = True
