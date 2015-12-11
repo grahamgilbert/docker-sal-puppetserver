@@ -22,3 +22,11 @@ extension_requests:
   1.3.6.1.4.1.34380.1.2.1.1: mySerialNumber
   1.3.6.1.4.1.34380.1.2.1.2: facter_virtual
 ```
+
+## Known issues
+
+For some reason the script that replaces the environment variables isn't running. As a work around, you can do something like the following:
+
+``` bash
+docker exec -ti puppetserver /run.sh
+```
