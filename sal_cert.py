@@ -32,7 +32,7 @@ public_key = os.getenv('SAL_PUPPETSERVER_PUBLIC_KEY', '123')
 logger.info("Public Key: %s", public_key)
 private_key = os.getenv('SAL_PUPPETSERVER_PRIVATE_KEY', '123')
 logger.info("Private Key: %s", private_key)
-if s.getenv('SAL_PUPPETSERVER_VERIFY', 'True').lower == 'false':
+if os.getenv('SAL_PUPPETSERVER_VERIFY', 'True').lower == 'false':
     verify = False
 else:
     verify = True
