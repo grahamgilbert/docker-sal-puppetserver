@@ -1,4 +1,4 @@
-FROM grahamgilbert/puppetserver:2.2.0
+FROM grahamgilbert/puppetserver:2.2.0.1
 MAINTAINER Graham Gilbert <graham@grahamgilbert.com>
 
 ENV SAL_PUPPETSERVER_URL='http://sal' SAL_PUPPETSERVER_PRIVATE_KEY=123 \
@@ -12,3 +12,5 @@ RUN touch /var/log/check_csr.out
 RUN chown puppet:puppet /var/log/check_csr.out
 ADD run.sh /run.sh
 RUN chmod 755 /run.sh
+ADD run.sh /etc/rc.local
+RUN chmod +x /etc/rc.local
