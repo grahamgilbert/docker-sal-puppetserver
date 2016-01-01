@@ -70,7 +70,8 @@ except:
     sys.exit(1)
 
 serial_number = strippedLineList2[trusted_attribute1+1].upper()
-
+if serial_number.startswith(".."):
+    serial_number = serial_number.replace("..", "")
 logger.info("Serial number: %s", serial_number)
 
 api_url = sal_url+'/api/machines/'+serial_number+'/'
