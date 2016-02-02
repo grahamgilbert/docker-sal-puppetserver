@@ -1,4 +1,4 @@
-FROM grahamgilbert/puppetserver:2.2.0.2
+FROM grahamgilbert/puppetserver:2.2.1
 MAINTAINER Graham Gilbert <graham@grahamgilbert.com>
 
 ENV SAL_PUPPETSERVER_URL='http://sal' SAL_PUPPETSERVER_PRIVATE_KEY=123 \
